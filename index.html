@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+
+    <title>connexion</title>
 </head>
+
 <body>
-<nav>
-    <a href="index.html">accueil</a>
-    <a href="stat_formateur.php">stats formateur</a>
-    <a href="stats_notes.php">stats notes</a>
-    <a href="stat_etudiant.php">stats etudiant</a>
-    <a href="stat_formation.php">stats formation</a>
-    <a href="inscription_eleve.php">inscription eleve</a>
-    <a href="recherche1.php">recherche par id</a>
-    <a href="recherche_liste.php">recherche via liste</a>
-</nav>
-    <h1>Bienvenue sur le tableau de bord des statistiques</h1>
-    <p>Choisissez une option dans le menu ci-dessus pour afficher les statistiques.</p>
+ 
+    <form action="connexion.php" method="POST">
+        <h2>Connexion</h2>
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Se connecter">
+    </form>
+    <a href="inscription.html">S'inscrire</a>
 </body>
-</html>
+

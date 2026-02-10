@@ -42,6 +42,7 @@ nav a {
     text-transform: capitalize;
 }
 
+
 nav a:hover {
     background-color: var(--primary-color);
     color: var(--white);
@@ -125,11 +126,44 @@ form label {
     font-weight: 400;
     color: var(--primary-color);
 }
+/* Style pour les liens hors navigation (ex: "S'inscrire") */
+a {
+                /* Un peu plus discret au repos */
+
+    width: fit-content;
+    margin: 20px auto;       /* Centre le lien horizontalement */
+    display: block;          /* Permet de centrer le lien comme un bloc */
+
+    padding: 12px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.8s ease, transform 0.8s ease;
+}
+
+
+
+/* Optionnel : Si tu veux qu'il ressemble à un petit bouton discret */
+.link-button {
+    border: 1px solid var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+.link-button:hover {
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+}
 
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"],
 form input[type="date"],
+form input[type="password"],
 form input[type="number"] {
     width: 100%;
     padding: 12px;

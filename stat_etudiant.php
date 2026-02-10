@@ -8,7 +8,7 @@
 </head>
 <body>
      <nav>
-    <a href="index.html">accueil</a>
+    <a href="menu.html">accueil</a>
     <a href="stat_formateur.php">stats formateur</a>
     <a href="stats_notes.php">stats notes</a>
     <a href="stat_etudiant.php">stats etudiant</a>

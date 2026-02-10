@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 03 fév. 2026 à 15:30
+-- Généré le : mar. 10 fév. 2026 à 16:38
 -- Version du serveur : 8.0.44
 -- Version de PHP : 8.2.30
 
@@ -194,6 +194,28 @@ INSERT INTO `salles` (`id_salle`, `nom_salle`, `capacite`, `equipement`) VALUES
 (4, 'Salle D', 30, 'Vidéoprojecteur, Sonorisation'),
 (5, 'Salle E', 18, 'Wi-Fi, Tableaux');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int NOT NULL,
+  `login` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `pass` text COLLATE utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `pass`) VALUES
+(1, 'kio', '$2y$10$.Yp3vlp3J9hF8T8KR8Cig.afde1CjRPh9P9SEcPXe/KIgb602Ragy'),
+(2, 'kio', '$2y$10$ZyB/2TM384L0V9/Q8ra5GOHDN1rxV74YP4OvH7vQ0WeYlsiiwIyVK'),
+(3, 'az', '$2y$10$mT6iTFAxokmu/0s24eqHCOtGmQxA4nQk6j04cJjK6ysaChrrzEzb2'),
+(4, 'maxime_cholley', '$2y$10$RZAvLfMKzkTaP7zhBK3ZROcE4Gne0b/2u/LEOHq9w8ge/5OB88Wu2');
+
 --
 -- Index pour les tables déchargées
 --
@@ -247,6 +269,12 @@ ALTER TABLE `salles`
   ADD PRIMARY KEY (`id_salle`);
 
 --
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -291,6 +319,12 @@ ALTER TABLE `notes`
 --
 ALTER TABLE `salles`
   MODIFY `id_salle` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
