@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ':pass' => $hashedPassword,
     ])) {
         echo "<p id='success'>Inscription réussie !</p>";
-        echo "<p><a href='index.html'>Se connecter</a></p>";
+        echo "<p><a href='index.html'>Se connecté</a></p>";
     } else {
         echo "<p id='error'>Erreur lors de l'inscription.</p>";
     }
