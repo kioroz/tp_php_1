@@ -11,21 +11,37 @@
 session_start();
 ?>
     <nav>
-        <?php
-    if ($_SESSION['role'] === 'formateur') {
-        echo '<a href="menu-formateur.php">accueil</a>';
-    } else if ($_SESSION['role'] === 'admin') {
-        echo '<a href="menu-admin.php">accueil</a>';
+    <?php
+    $role = $_SESSION['role'] ?? '';
+    // ADMIN : accès total
+    if ($role === 'admin') {
+        echo '<a href="menu_admin.php">accueil</a>';
+        echo '<a href="stat_formateur.php">stats formateur</a>';
+        echo '<a href="stats_notes.php">stats notes</a>';
+        echo '<a href="stat_etudiant.php">stats etudiant</a>';
+        echo '<a href="stat_formation.php">stats formation</a>';
+        echo '<a href="inscription_eleve.php">inscription eleve</a>';
+        echo '<a href="recherche1.php">recherche par id</a>';
+        echo '<a href="recherche_liste.php">recherche via liste</a>';
+    }
+
+    // ENSEIGNANT : accès aux infos des étudiants
+    else if ($role === 'enseignant') {
+        echo '<a href="menu_enseignant.php">accueil</a>';
+        echo '<a href="stat_formateur.php">stats formateur</a>';
+        echo '<a href="stats_notes.php">stats notes</a>';
+        echo '<a href="stat_etudiant.php">stats etudiant</a>';
+        echo '<a href="stat_formation.php">stats formation</a>';
+        echo '<a href="recherche1.php">recherche par id</a>';
+        echo '<a href="recherche_liste.php">recherche via liste</a>';
+    }
+
+    // ETUDIANT : accès limité
+    else if ($role === 'etudiant') {
+        header("Location: menu-etudiant.php");
+        exit();
     }
     ?>
-    <a href="menu.html">accueil</a>
-    <a href="stat_formateur.php">stats formateur</a>
-    <a href="stats_notes.php">stats notes</a>
-    <a href="stat_etudiant.php">stats etudiant</a>
-    <a href="stat_formation.php">stats formation</a>
-    <a href="inscription_eleve.php">inscription eleve</a>
-    <a href="recherche1.php">recherche par id</a>
-    <a href="recherche_liste.php">recherche via liste</a>
 </nav>
 <?php
 if (isset($_SESSION['username'])) {

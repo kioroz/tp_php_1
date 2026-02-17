@@ -22,7 +22,7 @@
     }
     ?>
 <nav>
-    <a href="menu-admin.php">accueil</a>
+    <a href="menu_admin.php">accueil</a>
     <a href="stat_formateur.php">stats formateur</a>
     <a href="stats_notes.php">stats notes</a>
     <a href="stat_etudiant.php">stats etudiant</a>
