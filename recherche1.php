@@ -7,7 +7,17 @@
     <title>recherche etudiant par id</title>
 </head>
 <body>
+<?php
+session_start();
+?>
     <nav>
+        <?php
+    if ($_SESSION['role'] === 'formateur') {
+        echo '<a href="menu-formateur.php">accueil</a>';
+    } else if ($_SESSION['role'] === 'admin') {
+        echo '<a href="menu-admin.php">accueil</a>';
+    }
+    ?>
     <a href="menu.html">accueil</a>
     <a href="stat_formateur.php">stats formateur</a>
     <a href="stats_notes.php">stats notes</a>
@@ -17,6 +27,11 @@
     <a href="recherche1.php">recherche par id</a>
     <a href="recherche_liste.php">recherche via liste</a>
 </nav>
+<?php
+if (isset($_SESSION['username'])) {
+    echo "<p id='welcome'>Bienvenue, " . htmlspecialchars($_SESSION['username']) . " (" . htmlspecialchars($_SESSION['role']) . ") ! <a href='logout.php' id='logout'>Déconnexion</a></p>";
+}
+?>
     <h2>Recherche d’un étudiant par ID</h2>
     <form action="#" method="POST">
         <label for="id_etudiant">ID Étudiant :</label>

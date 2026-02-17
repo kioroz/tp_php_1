@@ -7,13 +7,27 @@
     <title>Document</title>
 </head>
 <body>
+    <?
+    session_start();
+    echo "<p id='welcome'>Bienvenue, " . htmlspecialchars($_SESSION['username']) . " (" . htmlspecialchars($_SESSION['role']) . ") ! <a href='logout.php' id='logout'>Déconnexion</a></p>";
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.html");
+        exit();
+    } else if ($_SESSION['role'] === 'etudiant') {
+        header("Location: menu_etudiant.php");
+        exit();
+    }   else if ($_SESSION['role'] === 'admin') {
+        header("Location: menu_admin.php");
+        exit();
+    }
+    ?>
 <nav>
-    <a href="menu.html">accueil</a>
-    <a href="stat_formateur.php">stats formateur</a>
+    
+
+    <a href="menu_enseignant.php">accueil</a>
     <a href="stats_notes.php">stats notes</a>
     <a href="stat_etudiant.php">stats etudiant</a>
     <a href="stat_formation.php">stats formation</a>
-    <a href="inscription_eleve.php">inscription eleve</a>
     <a href="recherche1.php">recherche par id</a>
     <a href="recherche_liste.php">recherche via liste</a>
 </nav>

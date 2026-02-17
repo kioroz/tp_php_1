@@ -50,7 +50,7 @@ if ($username === '' || $password === '') {
 
 // 3. Préparation de la requête de vérification
 // On sélectionne l'ID et le mot de passe (colonne 'pass') pour l'utilisateur
-$sql = "SELECT id, pass FROM users WHERE login = ? LIMIT 1";
+$sql = "SELECT id, pass, role FROM users WHERE login = ? LIMIT 1";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$username]);
 $row = $stmt->fetch();
@@ -62,10 +62,10 @@ if ($row && password_verify($password, $row['pass'])) {
     // Connexion réussie : Initialisation de la session
     $_SESSION['user_id'] = $row['id'];
     $_SESSION['username'] = $username;
+    $_SESSION['role'] = $row['role'];
     
-    echo "<p id='success'>✅ Connexion réussie ! Bienvenue, " . htmlspecialchars($username) . "</p>";
-    echo "<p ><a href='menu.html'>Retour à l'accueil</a></p>";
-        
+    header("Location: menu_" . $_SESSION['role'] . ".php"); // Redirection vers la page d'accueil ou tableau de bord selon le rôle
+    exit(); 
 } else {
     // Échec de l'authentification (utilisateur non trouvé ou mot de passe incorrect)
     echo "<p id='error'>❌ Échec d'authentification : Nom d'utilisateur ou mot de passe incorrect.</p>";

@@ -222,3 +222,10 @@ form input[type="submit"]:hover {
     border: 1px solid #e74c3c;
     color: #e74c3c;
 }
+#welcome {
+    text-align: right;
+    margin: 10px 20px;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: var(--primary-color)  ;
+}

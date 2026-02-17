@@ -7,17 +7,49 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+    session_start();
+    ?>
     <nav>
-    <a href="menu.html">accueil</a>
-    <a href="stat_formateur.php">stats formateur</a>
-    <a href="stats_notes.php">stats notes</a>
-    <a href="stat_etudiant.php">stats etudiant</a>
-    <a href="stat_formation.php">stats formation</a>
-    <a href="inscription_eleve.php">inscription eleve</a>
-    <a href="recherche1.php">recherche par id</a>
-    <a href="recherche_liste.php">recherche via liste</a>
-</nav>
+    <?php
+    $role = $_SESSION['role'] ?? '';
 
+    // ADMIN : accès total
+    if ($role === 'admin') {
+        echo '<a href="menu_admin.php">accueil</a>';
+        echo '<a href="stat_formateur.php">stats formateur</a>';
+        echo '<a href="stats_notes.php">stats notes</a>';
+        echo '<a href="stat_etudiant.php">stats etudiant</a>';
+        echo '<a href="stat_formation.php">stats formation</a>';
+        echo '<a href="inscription_eleve.php">inscription eleve</a>';
+        echo '<a href="recherche1.php">recherche par id</a>';
+        echo '<a href="recherche_liste.php">recherche via liste</a>';
+    }
+
+    // ENSEIGNANT : accès aux infos des étudiants
+    else if ($role === 'enseignant') {
+        echo '<a href="menu_enseignant.php">accueil</a>';
+        echo '<a href="stat_formateur.php">stats formateur</a>';
+        echo '<a href="stats_notes.php">stats notes</a>';
+        echo '<a href="stat_etudiant.php">stats etudiant</a>';
+        echo '<a href="stat_formation.php">stats formation</a>';
+        echo '<a href="recherche1.php">recherche par id</a>';
+        echo '<a href="recherche_liste.php">recherche via liste</a>';
+    }
+
+    // ETUDIANT : accès limité
+    else if ($role === 'etudiant') {
+        echo '<a href="menu_etudiant.php">accueil</a>';
+        echo '<a href="stats_notes.php">mes notes</a>';
+        echo '<a href="stat_formation.php">mes formations</a>';
+    }
+    ?>
+</nav>
+<?php
+if (isset($_SESSION['username'])) {
+    echo "<p id='welcome'>Bienvenue, " . htmlspecialchars($_SESSION['username']) . " (" . htmlspecialchars($_SESSION['role']) . ") ! <a href='logout.php' id='logout'>Déconnexion</a></p>";
+}
+?>
     <h1>Statistiques des notes</h1>
     <p>Contenu de la page de statistiques des notes.</p>
     <?php

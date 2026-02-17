@@ -7,16 +7,43 @@
     <title>inscriptions elèves</title>
 </head>
 <body>
-    <nav>
-    <a href="menu.html">accueil</a>
-    <a href="stat_formateur.php">stats formateur</a>
-    <a href="stats_notes.php">stats notes</a>
-    <a href="stat_etudiant.php">stats etudiant</a>
-    <a href="stat_formation.php">stats formation</a>
-    <a href="inscription_eleve.php">inscription eleve</a>
-    <a href="recherche1.php">recherche par id</a>
-    <a href="recherche_liste.php">recherche via liste</a>
+    <?php
+    session_start();
+    ?>
+        <nav>
+    <?php
+    $role = $_SESSION['role'] ?? '';
+
+    // ADMIN : accès total
+    if ($role === 'admin') {
+        echo '<a href="menu_admin.php">accueil</a>';
+        echo '<a href="stat_formateur.php">stats formateur</a>';
+        echo '<a href="stats_notes.php">stats notes</a>';
+        echo '<a href="stat_etudiant.php">stats etudiant</a>';
+        echo '<a href="stat_formation.php">stats formation</a>';
+        echo '<a href="inscription_eleve.php">inscription eleve</a>';
+        echo '<a href="recherche1.php">recherche par id</a>';
+        echo '<a href="recherche_liste.php">recherche via liste</a>';
+    }
+
+    // ENSEIGNANT : accès aux infos des étudiants
+    else if ($role === 'enseignant') {
+        header("Location: menu_enseignant.php");
+        exit();
+    }
+
+    // ETUDIANT : accès limité
+    else if ($role === 'etudiant') {
+        header("Location: menu_etudiant.php");
+        exit();
+    }
+    ?>
 </nav>
+<?php
+if (isset($_SESSION['username'])) {
+    echo "<p id='welcome'>Bienvenue, " . htmlspecialchars($_SESSION['username']) . " (" . htmlspecialchars($_SESSION['role']) . ") ! <a href='logout.php' id='logout'>Déconnexion</a></p>";
+}
+?>
 
     <h1>Inscription des élèves</h1>
     <form action="#" method="POST">
@@ -77,7 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p id='error'> Erreur lors de l'inscription.</p>";
     }
 }
-
 
 
     ?>
