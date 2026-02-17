@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?
+    <?php
     session_start();
     echo "<p id='welcome'>Bienvenue, " . htmlspecialchars($_SESSION['username']) . " (" . htmlspecialchars($_SESSION['role']) . ") ! <a href='logout.php' id='logout'>Déconnexion</a></p>";
     if (!isset($_SESSION['username'])) {

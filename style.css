@@ -4,211 +4,135 @@
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #357abd;
-    --bg-color: #2f2f2f;
+    --bg-color: #1a1a1a;
     --text-color: #fff7f7;
     --white: #ffffff;
-    --text-color2: #242222;
+    --text-dark: #242222;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-color2);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     line-height: 1.6;
 }
 
-/* --- Barre de Navigation Horizontale --- */
+/* --- Barre de Navigation --- */
 nav {
-    background: var(--bg-color);
+    background: #252525;
     display: flex;
     justify-content: center;
     padding: 1rem;
-    box-shadow: 0 2px 10px rgba(1, 1, 1, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Sélecteur précis pour les liens du menu pour ne pas toucher aux autres liens */
 nav a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 500;
     margin: 0 15px;
     padding: 8px 15px;
     border-radius: 5px;
-    transition: all 0.3s ease; /* Animation fluide */
-    text-transform: capitalize;
-}
-
-
-nav a:hover {
     background-color: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px); /* Petit saut au survol */
 }
 
-/* --- Contenu Principal --- */
+/* --- Correction du texte de Bienvenue --- */
+#welcome {
+    text-align: right;
+    margin: 10px 20px;
+    font-size: 14px;
+    background-color: #333; /* Fond plus discret que le bleu flashy */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#logout {
+    background: #e74c3c !important; /* Rouge pour quitter */
+    display: inline-block !important;
+    margin-left: 10px;
+    padding: 5px 10px !important;
+    width: auto !important;
+}
+
+/* --- Titres --- */
 h1, h2 {
     text-align: center;
     color: var(--primary-color);
     margin-top: 30px;
-    animation: fadeInDown 0.8s ease-out;
 }
 
-p, ul {
+/* --- Correction des boîtes de texte (pour qu'elles ne compressent pas le formulaire) --- */
+p.info {
     max-width: 800px;
     margin: 20px auto;
     background: var(--white);
+    color: var(--text-dark);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    animation: fadeInUp 0.8s ease-out;
 }
 
-ul {
-    list-style: none;
-}
-
-li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    transition: padding-left 0.3s ease;
-}
-
-li:last-child {
-    border-bottom: none;
-}
-
-li:hover {
-    padding-left: 20px;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-
-/* --- Animations --- */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* --- Style du Formulaire --- */
+/* --- STYLE DU FORMULAIRE (Connexion / Inscription) --- */
 form {
-    max-width: 500px;
-    margin: 30px auto;
-    background: #3d3d3d; /* Un gris un peu plus clair que le fond */
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    animation: fadeInUp 0.8s ease-out;
+    max-width: 450px; /* Taille plus confortable */
+    margin: 50px auto;
+    background: #2d2d2d; /* Gris foncé cohérent */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 form label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 400;
     color: var(--primary-color);
-}
-/* Style pour les liens hors navigation (ex: "S'inscrire") */
-a {
-                /* Un peu plus discret au repos */
-
-    width: fit-content;
-    margin: 20px auto;       /* Centre le lien horizontalement */
-    display: block;          /* Permet de centrer le lien comme un bloc */
-
-    padding: 12px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.8s ease, transform 0.8s ease;
+    text-align: left; /* Aligne les labels à gauche */
 }
 
-
-
-/* Optionnel : Si tu veux qu'il ressemble à un petit bouton discret */
-.link-button {
-    border: 1px solid var(--primary-color);
-    padding: 8px 20px;
-    border-radius: 20px;
-}
-
-.link-button:hover {
-    background-color: var(--primary-color);
-    color: var(--white) !important;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="tel"],
-form input[type="date"],
-form input[type="password"],
-form input[type="number"] {
+form input:not([type="submit"]) {
     width: 100%;
     padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #555;
+    margin-bottom: 25px;
+    border: 1px solid #444;
     border-radius: 6px;
-    background: #252525;
+    background: #1a1a1a;
     color: white;
-    box-sizing: border-box; /* Évite que l'input dépasse du cadre */
-    transition: border-color 0.3s ease;
-}
-
-form input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    box-sizing: border-box; /* Crucial pour la largeur */
 }
 
 form input[type="submit"] {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background-color: var(--primary-color);
     border: none;
     border-radius: 6px;
     color: white;
-    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: 0.3s;
 }
 
-form input[type="submit"]:hover {
-    background-color: var(--secondary-color);
-    transform: scale(1.02);
-}
-
-/* --- Messages de Succès et Erreur --- */
-#success, #error {
-    max-width: 500px;
+/* --- LA RÈGLE QUI CASSAIT TOUT --- */
+/* On cible uniquement les liens qui doivent être des "boutons isolés" (ex: S'inscrire) */
+a.link-button, .btn-primary {
+    width: fit-content;
     margin: 20px auto;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    animation: fadeInUp 0.5s ease;
+    display: block;
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/* Pour ton lien "S'inscrire" actuel, si tu ne veux pas changer le HTML : */
+body > a {
+    width: fit-content;
+    margin: 20px auto;
+    display: block;
+    color: var(--primary-color);
+    text-decoration: underline;
 }
 
 #success {
@@ -221,11 +145,4 @@ form input[type="submit"]:hover {
     background-color: rgba(231, 76, 60, 0.2); /* Fond rouge transparent */
     border: 1px solid #e74c3c;
     color: #e74c3c;
-}
-#welcome {
-    text-align: right;
-    margin: 10px 20px;
-    font-size: 14px;
-    color: var(--text-color);
-    background-color: var(--primary-color)  ;
 }
